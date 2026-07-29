@@ -15,7 +15,7 @@ class ExpenseController extends Controller
     {
         $query = $request->user()->expenses();
 
-        if ($request->has('category') && $request->category !== 'All') {
+        if ($request->filled('category') && $request->category !== 'All') {
             $query->where('category', $request->category);
         }
 
@@ -87,7 +87,7 @@ class ExpenseController extends Controller
             fputcsv($file, ['ID', 'Category', 'Amount', 'Description', 'Date']);
 
             $query = $request->user()->expenses();
-            if ($request->has('category') && $request->category !== 'All') {
+            if ($request->filled('category') && $request->category !== 'All') {
                 $query->where('category', $request->category);
             }
 
