@@ -106,6 +106,6 @@ class ExpenseController extends Controller
             fclose($file);
         };
 
-        return response()->stream($callback, 200, $headers);
+        return response()->streamDownload($callback, 'expenses.csv', $headers);
     }
 }
