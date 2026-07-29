@@ -54,3 +54,13 @@ To run all checks before pushing or deploying your code:
 ```bash
 composer run ci:check
 ```
+
+## Deployment (Render)
+
+This application includes a production-ready `Dockerfile` designed specifically for hosting platforms like Render.
+
+1. **Create your Database**: Create a Postgres database on Render.
+2. **Create Web Service**: Create a new Web Service and select your repository.
+3. **Environment**: Select **Docker** as the environment (Render will automatically detect the `Dockerfile`).
+4. **Variables**: Add your environment variables (`APP_KEY`, `DATABASE_URL`, `APP_ENV=production`, etc.).
+5. **Deploy**: The Docker image will automatically install dependencies, compile frontend assets, and run database migrations on boot.
